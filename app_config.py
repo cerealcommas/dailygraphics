@@ -53,17 +53,17 @@ authomatic = Authomatic(authomatic_config, os.environ.get('AUTHOMATIC_SALT'))
 DEPLOYMENT
 """
 PRODUCTION_S3_BUCKET = {
-    'bucket_name': 'mashable-sergio-hernandez-apps.s3.amazonaws.com',
+    'bucket_name': 'mashable-sergio-hernandez-apps',
     'region': 'us-east-1'
 }
 
 STAGING_S3_BUCKET = {
-    'bucket_name': 'mashable-sergio-hernandez-stage.s3.amazonaws.com',
+    'bucket_name': 'mashable-sergio-hernandez-stage',
     'region': 'us-east-1'
 }
 
 ASSETS_S3_BUCKET = {
-    'bucket_name': 'mashable-sergio-hernandez-assets.s3.amazonaws.com',
+    'bucket_name': 'mashable-sergio-hernandez-assets',
     'region': 'us-east-1'
 }
 
@@ -97,13 +97,13 @@ def configure_targets(deployment_target):
 
     if deployment_target == 'production':
         S3_BUCKET = PRODUCTION_S3_BUCKET
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
-        S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_BASE_URL = 'http://%s.s3-website-us-east-1.amazonaws.com/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_DEPLOY_URL = 's3://%s.s3-website-us-east-1.amazonaws.com/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         DEBUG = False
     elif deployment_target == 'staging':
         S3_BUCKET = STAGING_S3_BUCKET
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
-        S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_BASE_URL = 'http://%s.s3-website-us-east-1.amazonaws.com/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_DEPLOY_URL = 's3://%s.s3-website-us-east-1.amazonaws.com/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         DEBUG = True
     else:
         S3_BUCKET = None
