@@ -15,9 +15,8 @@
     {% endif %}
 
     <div class="footer">
-        {% if COPY.labels.source %}<p>SOURCE: {{ COPY.labels.source }}</p>{% endif %}
-        {% if COPY.labels.credit %}<p>{{ COPY.labels.credit }}</p>{% endif %}
-        <div id="watermark"></div>
+        {% if COPY.labels.source %}<p>Source: {{ COPY.labels.source }}</p>{% endif %}
+        {% if COPY.labels.credit %}<p>Credit: {{ COPY.labels.credit }}</p>{% endif %}
     </div>
 
 {% endblock content %}

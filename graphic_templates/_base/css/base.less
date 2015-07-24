@@ -42,7 +42,7 @@ html { -webkit-text-size-adjust: none; }
 body {
     margin: 0;
     padding: 1em 0;
-    font: 'proxima-nova-condensed', Helvetica, Arial, sans-serif;
+    font-family: 'proxima-nova-condensed', Helvetica, Arial, sans-serif;
     color: #000;
 }
 
@@ -175,14 +175,14 @@ rect {
 }
 
 .axis {
-    font-size: 11px;
+    font-size: 75%;
     -webkit-font-smoothing: antialiased;
-    fill: #999;
+    fill: #000;
 
     path,
     line {
         fill: none;
-        stroke: #ccc;
+        stroke: #000;
         shape-rendering: crispEdges;
     }
 
@@ -195,7 +195,7 @@ rect {
 .grid {
     path { display: none; }
     .tick {
-        stroke: #eee;
+        stroke: #000;
         stroke-width: 1px;
         shape-rendering: crispEdges;
     }
@@ -206,10 +206,10 @@ rect {
 }
 
 .value text {
-    font-size: 10px;
+    font-size: 80%;
     -webkit-font-smoothing: antialiased;
 
     &.in { fill: #fff; }
-    &.out { fill: #999; }
+    &.out { fill: #000; }
     &.other { display: none; }
 }
