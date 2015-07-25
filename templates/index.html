@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -159,29 +160,258 @@
                     <li><a href="/templates/{{ template }}/?refresh=1">{{ template }}</a></li>
                     {% endfor %}
                 </ul>
+                Graphics
+                <ul class="nav nav-sidebar">
+                    {% for graphic in graphics %}
+                    <li><a href="/graphics/{{ graphic }}/?refresh=1" target="_blank">{{ graphic }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">MashGraphics</h1>
                 <div class="row">
                     <div class="col-md-12">
                         <h3>Welcome to MashGraphics! Let’s get started.</h3>
-                        <p>Mashgraphics (based on NPR’s <a href="//github.com/nprapps/dailygraphics">dailygraphics</a>) is a framework for creating and deploying responsive graphics suitable for publishing inside a CMS with <a href="//github.com/nprapps/pym.js">pym.js</a>. The MashGraphics rig offers a workflow and some automated machinery for creating, deploying and embedding short-turnaround charts, tables and other graphics for daily stories.</p>
+                        <p>Mashgraphics (based on NPR’s <a href="//github.com/nprapps/dailygraphics">dailygraphics</a>) is a framework for creating and deploying responsive graphics suitable for publishing inside a CMS with <a href="//github.com/nprapps/pym.js">pym.js</a>. The MashGraphics rig offers a workflow and some automated machinery for creating, deploying and embedding short-turnaround charts, tables and other graphics for daily stories.</p>                        
                     </div>
                 </div>
-                <h2 class="sub-header">There are <strong>{{ graphics_count }}</strong> graphics:</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>How do I make a graphic?</h3>
+                        <p>Mashgraphics includes starter code for a few different types of graphics (and we’re slowly adding more as we go). Running any of these commands will create the folder $SLUG within your <code>app_config.GRAPHICS_PATH</code> folder. Within the new folder will be a <code>child_template.html</code> file and some boilerplate javascript files. <code>child_template.html</code> is a Jinja template that will be rendered with a context containing the contents of <code>app_config.py</code>, <code>graphic_config.py</code> and the COPY document for that graphic. It also will clone a new Google Spreadsheet for you to use for text and data. Build out your graphic in <code>child_template.html</code>, and put your javascript in <code>js/graphic.js</code>.</p>
+                        <ol>
+                        <li>Setting up your graphic</li>
+                            <ol>
+                                <li><a href="#slug">Choose a slug</a></li>
+                                <li><a href="#generate">Generate a graphic</a></li>
+                                <li><a href="#data">Enter your data</a></li>
+                            </ol>
+                        <li>Publishing your graphic</li>
+                        <ol>
+                                <li><a href="#deploy">Deploying your graphic</a></li>
+                                <li><a href="#embed">Embedding your graphic</a></li>
+                            </ol>
+                        <li>Misc</li>
+                            <ol>
+                                <li><a href="#templates">Graphic templates</a></li>
+                            </ol>
+                        </ol>
+                <a name="slug"></a><div class="row"> <div class="col-md-12">
+                        <h3>Setting Up Your Graphic</h3>
+                        <h4> 1. Choose a slug</h4>
+                        <p>A <code>$SLUG</code> is the name of your graphic. Its format should be the date (<code>YYYY-MM-DD</code>), followed by a short, descriptive name for your project, like <code>gay-marriage-map</code> or <code>poverty-chart</code>. Keep it URL-safe (i.e., Lowercase, dashes instead of spaces, and no special characters).</p>
+                        <p>Here are some examples:</p>
+                        <ul class="fa-ul">
+                            <li><code>2015-07-31-my-project-name</code> <span class="label label-success">YAAAS!</span></li>
+                            <li><code>2015 07 31 my project name</code> <span class="label label-danger">No</span></li>
+                            <li><code>20150731-my-project-name</code> <span class="label label-danger">Bad</span></li>
+                            <li><code>2015-07-31-My-Project-NAME</code> <span class="label label-danger">Danger, Will Robinson</span></li>
+                            <li><code>2015 07 31 my wonderful project!</code> <span class="label label-danger">Are you F-ing kidding me?</span></li>
+                        </ul>
+                    </div></div>
+                <a name="generate"></a><div class="row"><div class="col-md-12">
+                        <h4>2. Generate a graphic</h4>
+                        <p>Next you’ll generate your graphic using a built-in tool called Fabric, or <code>fab</code>.</p>
+                        <ol>
+                        <li>Choose what kind of graphic you need to make (regular graphic, bar chart, column chart, line chart, etc.).
+                         <p><span class="label label-default">Templates</span> See <a href="#templates">here</a> to see what kinds of graphic templates are available and to look up their respective <code>fab</code> commands.</p></li>
+                        <li>Run the corresponding <code>fab</code> command in your terminal.
+                        <p><span class="label label-danger">Heads up!</span> Remember to replace <code>$SLUG</code> with the slug you chose in Step 1. For example, if you want to make a dot chart slugged <code>2015-07-31-my-project-name</code>, you would run: <code>fab add_dot_chart:2015-07-31-my-project-name</code>.</p></li>
+                        <li><p>Your terminal should spit out the following:</p>
+                <pre>
+$ fab add_dot_chart:2015-07-31-my-project-name
+[localhost] local: cp -r graphic_templates/_base ~/mashgraphics/graphics/2015-07-31-my-project-name
+[localhost] local: cp -r graphic_templates/dot_chart/* ~/mashgraphics/graphics/2015-07-31-my-project-name
+Creating spreadsheet...
+New spreadsheet created successfully!
+View it online at https://docs.google.com/spreadsheet/ccc?key=1tjL_dVh59j4-RxAR9aUXC27cLLl6q48my34hgY_ukgU#gid=1
+Run `fab app` and visit http://127.0.0.1:8000/graphics/2015-07-31-my-project-name to view
+
+Done.</pre></li>
+</div></div>
+                <a name="data"></a><div class="row"><div class="col-md-12">
+                    <h4>3. Enter your data</h4>
+                    <ol>
+                    <li>To enter your data, refresh this page; A link to your graphic will appear in the column on the left. Click on it to open your graphic.</li>
+                    <style>
+                    .btn {
+                        font-size: 12px;
+                        line-height: 28px;
+                        margin: 0;
+                        padding: 0 11px;
+                        border-radius: 4px;
+                        background-color: #f7f7f7;
+                        font-weight: bold;
+                        -webkit-font-smoothing: antialiased;
+                    }
+
+                    .btn:hover,
+                    .btn:active {
+                        background-color: #f7f7f7;
+                    }
+
+                    .spreadsheet,
+                    .spreadsheet,
+                    .spreadsheet:hover {
+                        color: #0F9D58;
+                    }
+                    .staging,
+                    .staging,
+                    .staging:hover {
+                        color: orange;
+                    }
+                    .production,
+                    .production,
+                    .production:hover {
+                        color: red;
+                    }
+                    </style>
+                    <li>On your graphic’s page, click on the <span class="btn spreadsheet"><i class="fa fa-table fa-fw"></i> spreadsheet &raquo;</span> button.</li>
+                    <li>A Google spreadsheet should open in a new tab/window. The specifics will vary depending on what kind of graphic or chart you generated, but most graphics should have two sheets: <code>labels</code> and <code>data</code>.
+                    </li>
+                    <li>On the <code>labels</code> sheet, edit the values for <code>headline</code>, <code>subhed</code>, <code>footnote</code>, <code>source</code>, and <code>credit</code> as necessary.</li>
+                    <li>On the <code>data</code> sheet, enter the data you want to include in your graphic.</li>
+                    <li>Refresh your graphic page.
+                    <p><span class="label label-warning">Heads up!</span> If you’ve followed these instructions to the letter, you shouldn’t be having any problems. But if the changes to your Google sheet aren’t showing up, try running <code>fab update_copy:$SLUG</code> in your terminal <strong>OR</strong> visiting <code>http://127.0.0.1:8000/graphics/$SLUG/?refresh=1</code>.</p></li>
+                    <li>Click on the 
+                    <span class="btn"><i class="fa fa-outdent fa-fw"></i> Sidebar (180px)</span>, 
+                    <span class="btn"><i class="fa fa-mobile fa-fw"></i> Mobile (300px)</span>, 
+                    <span class="btn"><i class="fa fa-desktop fa-fw"></i> Desktop (730px)</span>, and 
+                    <span class="btn"><i class="fa fa-search-plus fa-fw"></i> Fluid (100%)</span> buttons to preview how your graphic will appear on different platforms.</li>
+                    </ol>
+                </div></div>
+
+               <a name="deploy"></a><div class="row"><div class="col-md-12">
+                     <h3>Publishing Your Graphic</h3>
+                     <h4>4. Deploying your graphic</h4>
+                        <p>“Deploying” a graphic (or moving it from your computer to the Internet) is essentially a two-part process. First, you’ll need to “stage” your graphic, which means uploading it to a hidden server on the Internet, known as a “staging environment,” for final testing.</p>
+                        <p>When you’re satisfied with your staged graphic, you can deploy it to a public server (known as a “production environment”). This is the version that you will embed into your story.</p>
+                        <p>
+                            <ol>
+                                <li>To stage your graphic, run <code>fab staging deploy:$SLUG</code> in your terminal.</li>
+
+                                <li>Your terminal should spit out a bunch of stuff, ending with something like this:
+<pre>
+Staging URL: http://mashable-your-name-stage.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
+
+Done.
+</pre>
+                                </li>
+                                <li>In your browser, on your graphic’s page, click on the <span class="btn staging"><i class="fa fa-cubes fa-fw"></i> staging &raquo;</span> button. It should open a new, “staging” tab/window.</li>
+                                <li>If everything looks good, run <code>fab production deploy:$SLUG</code> in your terminal.</li>
+                                <li>You should get:
+<pre>
+Production URL: http://mashable-your-name-apps.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
+
+Done.
+</pre>
+                                <li>In your browser, on your graphic’s page, click on the <span class="btn production"><i class="fa fa-cubes fa-fw"></i> production &raquo;</span> button. This time, it should open a “production” tab/window.</li>
+                            </ol>
+                </div></div>
+                <a name="embed"></a><div class="row"><div class="col-md-12">
+                    <h4>5. Embedding your graphic <span class="label label-success">You’re almost there!</span></h4>
+                    <ol>
+                        <li>On <code>http://mashable-your-name-apps.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/</code>, there should be an iframe with your graphic inside of it, and an embed code below the graphic.</li>
+                        <li>Copy and paste the embed code into your WordPress shell.</li>
+                    </ol>
+                </div></div>
+
+                <a name="templates"></a><div class="row"><div class="col-md-12">
+                        <h4>Graphic templates</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Type</th>
+                                    <th>Fab command</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img alt="Basic graphic" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/graphic.png" /></td>
+                                    <td>Very basic new graphic</td>
+                                    <td><code>fab add_graphic:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Bar chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/bar-chart.png" /></td>
+                                    <td>Bar chart</td>
+                                    <td><code>fab add_bar_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Grouped bar chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/grouped-bar-chart.png" /></td>
+                                    <td>Grouped bar chart</td>
+                                    <td><code>fab add_grouped_bar_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Stacked bar chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/stacked-bar-chart.png" /></td>
+                                    <td>Stacked bar chart</td>
+                                    <td><code>fab add_stacked_bar_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Column chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/column-chart.png" /></td>
+                                    <td>Column chart</td>
+                                    <td><code>fab add_column_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Stacked column chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/stacked-column-chart.png" /></td>
+                                    <td>Stacked column chart</td>
+                                    <td><code>fab add_stacked_column_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Block histogram" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/block-histogram.png" /></td>
+                                    <td>Block histogram</td>
+                                    <td><code>fab add_block_histogram:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Line chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/line-chart.png" /></td>
+                                    <td>Line chart</td>
+                                    <td><code>fab add_line_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Slopegraph" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/slopegraph.png" /></td>
+                                    <td>Slopegraph</td>
+                                    <td><code>fab add_slopegraph:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Dot chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/dot-chart.png" /></td>
+                                    <td>Dot chart</td>
+                                    <td><code>fab add_dot_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Locator map" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/locator-map.png" /></td>
+                                    <td><a href="#creating-locator-maps">Locator map</a></td>
+                                    <td><code>fab add_map:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="State grid map" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/state-grid-map.png" /></td>
+                                    <td>State grid map</td>
+                                    <td><code>fab add_state_grid_map:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Table" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/table.png" /></td>
+                                    <td>Responsive HTML table</td>
+                                    <td><code>fab add_table:$SLUG</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div></div>
+
+
+
+                <h4 class="sub-header">There are <strong>{{ graphics_count }}</strong> graphics:</h4>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Header</th>
+                                <th>Slug</th>
                             </tr>
                         </thead>
                         <tbody>
-            {% for graphic in graphics %}
-                <tr>
-                    <td><a href="/graphics/{{ graphic }}/?refresh=1">{{ graphic }}</a></td>
-                </tr>
-            {% endfor %}
+                            {% for graphic in graphics %}
+                            <tr>
+                                <td><a href="/graphics/{{ graphic }}/?refresh=1">{{ graphic }}</a></td>
+                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
