@@ -196,7 +196,40 @@
                                 <li><a href="#templates">Graphic templates</a></li>
                             </ol>
                         </ol>
-                <a name="slug"></a><div class="row"> <div class="col-md-12">
+                <a name="workspace"></a><div class="row"><div class="col-md-12">
+                <h3>Your Workspace</h3>
+                    <p>If you’re reading this, you (or someone) has already downloaded and launched MashGraphics to and from your local computer.</p>
+                    <p>But to start creating your own graphics, you’re going to need to learn to use the Terminal a little bit. If you’ve never used the Terminal or a command line before, read <strong>Terminal 101</strong>. If you already know your way around a shell prompt, <code>cd</code> into <code>mashgraphics</code> and skip to Step 5 under <strong>Launching MashGraphics</strong>.</p>
+                    <h4>Terminal 101</h4>
+                    <ol>
+                            <li>Use <kbd>cmd + space</kbd> to open Spotlight Search and find the Terminal application (if you can’t find it with Spotlight, it’s in <code>/Applications/Utilities/Terminal.app</code>).</li>
+                            <li>By default, the Terminal will open to your Home directory (<code>/Users/YourName</code>). Let’s switch to your Desktop.</li>
+                            <li>Type <code>cd Desk</code>, then hit <kbd>tab</kbd> (the Terminal will recognize that you’re looking for the Desktop folder and auto-complete the command for you), then hit <kbd>return</kbd>.</li>
+                            <li>Now type in <code>ls</code> and hit <kbd>return</kbd>.</li>
+                            <li>You should get a list of all the files on your Desktop.</li>
+                            <li><code>cd</code> and <code>ls</code> are “commands” (“change directory” and “list directory contents”, respectively). You basically <em>command</em>ed the computer to <em>change directories</em> (<code>cd</code>) into your Desktop folder, and then <em>command</em> it to <em>list</em> (<code>ls</code>) the current directory’s contents. This is the gist of what the Terminal does—you type in commands to make the computer do things, like navigate the folders on your hard drive.
+                            <p><span class="label label-default">Note</span> If you ever want to see what directory you’re currently in, run <code>pwd</code> (“print working directory”). You can also do <code>open .</code> to <em>open</em> the current directory with the Finder.</p></li>
+                    </ol>
+                    <h4>Launching MashGraphics</h4>
+                        <ol>
+                            <li>Open a fresh Terminal window. If it’s already running, you can use <kbd>cmd + N</kbd>.</li>
+                            <li>To launch and start using MashGraphics, you’ll need to <code>cd</code> into the <code>mashgraphics</code> directory. It should have been installed into the <code>Applications</code> folder within your <code>Home</code> directory.</li>
+                            <li>To get there using the Terminal, run <code>cd ~/Applications/mashgraphics</code>.</li>
+                            <li>Your prompt should look like this:
+<p><pre>JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
+                            <li>Now run <code>fab app</code>. You should get:
+<p><pre>JohnDoes-MacBook-Pro:mashgraphics John$ fab app
+[localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
+>_</pre></p>
+                            <p>Congratulations! You just launched MashGraphics all on your own and it’s running normally on your local computer.</p></li>
+                        <li>Since this shell is busy running the MashApps software, you’ll need to open a second one to make graphics. Do this by opening a new Terminal tab using <kbd>cmd + T</kbd>.</li>
+                        <li>The new tab should show something like this:
+<p><pre>JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
+                        <li>From here on out, any time the instructions say to run a command in the Terminal, do it in this tab.</li>
+                        <li>Finally, open a browser window and go to <code>localhost:8000</code>
+                    </ol>
+                </div></div>
+                <a name="slug"></a><div class="row"><div class="col-md-12">
                         <h3>Setting Up Your Graphic</h3>
                         <h4> 1. Choose a slug</h4>
                         <p>A <code>$SLUG</code> is the name of your graphic. Its format should be the date (<code>YYYY-MM-DD</code>), followed by a short, descriptive name for your project, like <code>gay-marriage-map</code> or <code>poverty-chart</code>. Keep it URL-safe (i.e., Lowercase, dashes instead of spaces, and no special characters).</p>
