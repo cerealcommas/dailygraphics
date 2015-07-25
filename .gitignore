@@ -53,3 +53,8 @@ www/graphics/*/child.html
 dailygraphics.sublime-*
 graphic_templates/**/*.xlsx
 graphic_templates/_basec
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
