@@ -169,6 +169,12 @@
             color: red;
         }
 
+        .spreadsheet,
+        &.spreadsheet,
+        &.spreadsheet:visited {
+            color: #0F9D58;
+        }
+
         .resize {
             background-color: white;
         }
@@ -267,7 +273,7 @@
                 {% if COPY_GOOGLE_DOC_KEY %}
                 {% if COPY_GOOGLE_DOC_KEY != 'None' %}
                 <div class="segment">
-                    <a class="btn" href="https://docs.google.com/spreadsheets/d/{{ COPY_GOOGLE_DOC_KEY }}/edit" target="_blank"><i class="fa fa-table fa-fw"></i> spreadsheet &raquo;</a>
+                    <a class="btn spreadsheet" href="https://docs.google.com/spreadsheets/d/{{ COPY_GOOGLE_DOC_KEY }}/edit" target="_blank"><i class="fa fa-table fa-fw"></i> spreadsheet &raquo;</a>
                 </div>
                 {% endif %}
                 {% endif %}
