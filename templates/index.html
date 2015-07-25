@@ -1,83 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xml:lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Graphic Embed : Mashable</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <style type="text/css">
-        body {
-            font: 14px/1.4 Helvetica, Arial, sans-serif;
-            color: #333;
-        }
-
-        h1 {
-            font-size: 20px;
-            margin: 0;
-        }
-        h2 {
-            font-size: 14px;
-            margin: 0 0 11px 0;
-        }
-
-        button {
-            font-size: 12px;
-            line-height: 28px;
-            margin: 0;
-            float: right;
-            padding: 0 11px;
-            border-radius: 4px;
-            background-color: #f1f1f1;
-            font-weight: bold;
-            -webkit-font-smoothing: antialiased;
-            color: #4774CC;
-            border: none;
-        }
-        button:hover,
-        button:active {
-            opacity: 0.7;
-        }
-
-        .graphics-list li,
-        .templates-list li {
-            margin-top: 0;
-            margin-bottom: 6px;
-        }
-
-        .parent-header { margin-bottom: 11px; }
-        .parent-header:before,
-        .parent-header:after {
-            content: ' ';
-            display: table;
-        }
-        .parent-header:after { clear: both; }
-        .parent-header h1 { float: left; }
-        .parent-header button { float: right; }
-
-        textarea {
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+    /*
+ * Base structure
+ */
+    /* Move down content because we have a fixed navbar that is 50px tall */
+    
+    body {
+        padding-top: 50px;
+    }
+    /*
+ * Global add-ons
+ */
+    
+    .sub-header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    /*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+    
+    .navbar-fixed-top {
+        border: 0;
+    }
+    /*
+ * Sidebar
+ */
+    /* Hide for mobile, show later */
+    
+    .sidebar {
+        display: none;
+    }
+    
+    @media (min-width: 768px) {
+        .sidebar {
+            position: fixed;
+            top: 51px;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
             display: block;
-            margin-bottom: 33px;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* Scrollable contents if viewport is shorter than content. */
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
         }
-
-        a, a:link, a:visited {
-            color: #4774CC;
-            text-decoration: none;
+    }
+    /* Sidebar navigation */
+    
+    .nav-sidebar {
+        margin-right: -21px;
+        /* 20px padding + 1px border */
+        margin-bottom: 20px;
+        margin-left: -20px;
+    }
+    
+    .nav-sidebar > li > a {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    .nav-sidebar > .active > a,
+    .nav-sidebar > .active > a:hover,
+    .nav-sidebar > .active > a:focus {
+        color: #fff;
+        background-color: #428bca;
+    }
+    /*
+ * Main content
+ */
+    
+    .main {
+        padding: 20px;
+    }
+    
+    @media (min-width: 768px) {
+        .main {
+            padding-right: 40px;
+            padding-left: 40px;
         }
-        a:hover, a:active { color: #bccae5; }
+    }
+    
+    .main .page-header {
+        margin-top: 0;
+    }
+    /*
+ * Placeholder dashboard ideas
+ */
+    
+    .placeholders {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .placeholders h4 {
+        margin-bottom: 0;
+    }
+    
+    .placeholder {
+        margin-bottom: 20px;
+    }
+    
+    .placeholder img {
+        display: inline-block;
+        border-radius: 50%;
+    }
     </style>
 </head>
+
 <body>
-
-<!-- index -->
-<h1>There are <strong>{{ graphics_count }}</strong> graphics:</h1>
-
-<ol class="graphics-list">{% for graphic in graphics %}
-    <li><a href="/graphics/{{ graphic }}/?refresh=1">{{ graphic }}</a></li>
-{% endfor %}</ol>
-
-<h1>There are <strong>{{ templates_count }}</strong> templates:</h1>
-
-<ol class="templates-list">{% for template in templates %}
-    <li><a href="/templates/{{ template }}/?refresh=1">{{ template }}</a></li>
-{% endfor %}</ol>
-
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="//rack.3.mshcdn.com/assets/header_logo.v2.us-30574d105ad07318345ec8f1a85a3efa.png" style="height: 1.25em;"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard <span class="sr-only">(current)</span></a></li>
+                </ul>
+                Templates
+                <ul class="nav nav-sidebar">
+                    {% for template in templates %}
+                    <li><a href="/templates/{{ template }}/?refresh=1">{{ template }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">MashGraphics</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Welcome to MashGraphics! Let’s get started.</h3>
+                        <p>Mashgraphics (based on NPR’s <a href="//github.com/nprapps/dailygraphics">dailygraphics</a>) is a framework for creating and deploying responsive graphics suitable for publishing inside a CMS with <a href="//github.com/nprapps/pym.js">pym.js</a>. The MashGraphics rig offers a workflow and some automated machinery for creating, deploying and embedding short-turnaround charts, tables and other graphics for daily stories.</p>
+                    </div>
+                </div>
+                <h2 class="sub-header">There are <strong>{{ graphics_count }}</strong> graphics:</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Header</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            {% for graphic in graphics %}
+                <tr>
+                    <td><a href="/graphics/{{ graphic }}/?refresh=1">{{ graphic }}</a></td>
+                </tr>
+            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+</html>
+
 </html>
