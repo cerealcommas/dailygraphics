@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Graphic Embed : Mashable</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="//rack.3.mshcdn.com/assets/header_logo.v2.us-30574d105ad07318345ec8f1a85a3efa.png" style="height: 1.25em;"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="/static/docs.html"><i class="fa fa-book fa-fw"></i> Documentation</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-bar-chart fa-fw"></i> Templates <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/static/checklist.html"><i class="fa fa-check-square-o fa-fw"></i> Checklist</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Templates</h1>
+                <a name="templates"></a><div class="row"><div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Type</th>
+                                    <th>Fab command</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img alt="Basic graphic" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/graphic.png" /></td>
+                                    <td>Very basic new graphic</td>
+                                    <td><code>fab add_graphic:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Bar chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/bar-chart.png" /></td>
+                                    <td>Bar chart</td>
+                                    <td><code>fab add_bar_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Grouped bar chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/grouped-bar-chart.png" /></td>
+                                    <td>Grouped bar chart</td>
+                                    <td><code>fab add_grouped_bar_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Stacked bar chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/stacked-bar-chart.png" /></td>
+                                    <td>Stacked bar chart</td>
+                                    <td><code>fab add_stacked_bar_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Column chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/column-chart.png" /></td>
+                                    <td>Column chart</td>
+                                    <td><code>fab add_column_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Stacked column chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/stacked-column-chart.png" /></td>
+                                    <td>Stacked column chart</td>
+                                    <td><code>fab add_stacked_column_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Block histogram" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/block-histogram.png" /></td>
+                                    <td>Block histogram</td>
+                                    <td><code>fab add_block_histogram:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Line chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/line-chart.png" /></td>
+                                    <td>Line chart</td>
+                                    <td><code>fab add_line_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Slopegraph" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/slopegraph.png" /></td>
+                                    <td>Slopegraph</td>
+                                    <td><code>fab add_slopegraph:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Dot chart" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/dot-chart.png" /></td>
+                                    <td>Dot chart</td>
+                                    <td><code>fab add_dot_chart:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Locator map" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/locator-map.png" /></td>
+                                    <td><a href="#creating-locator-maps">Locator map</a></td>
+                                    <td><code>fab add_map:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="State grid map" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/state-grid-map.png" /></td>
+                                    <td>State grid map</td>
+                                    <td><code>fab add_state_grid_map:$SLUG</code></td>
+                                </tr>
+                                <tr>
+                                    <td><img alt="Table" src="https://raw.githubusercontent.com/nprapps/dailygraphics/master/graphic_templates/_thumbs/table.png" /></td>
+                                    <td>Responsive HTML table</td>
+                                    <td><code>fab add_table:$SLUG</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Graphic Embed : Mashable</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="//rack.3.mshcdn.com/assets/header_logo.v2.us-30574d105ad07318345ec8f1a85a3efa.png" style="height: 1.25em;"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="/static/docs.html"><i class="fa fa-book fa-fw"></i> Documentation</a></li>
+                    <li><a href="/static/templates.html"><i class="fa fa-bar-chart fa-fw"></i> Templates</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-check-square-o fa-fw"></i> Checklist <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Pre-Production Checklist</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Before deploying your graphic to production, it’s a good idea to run through this checklist for any thing you may have missed.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Initial Concept</h3>
+                        <ul>
+                            <li>Is the data organized by the component most important to the narrative?
+                                <ul>
+                                    <li>geographic -> map</li>
+                                    <li>temporal -> timeline</li>
+                                    <li>ordinal -> table</li>
+                                </ul>
+                            </li>
+                            <li>Do we have sufficient narrative context to understand the meaning of the data?</li>
+                            <li>If the data is vulnerable to being misinterpreted, have we adequately warned against it?</li>
+                        </ul>
+                        <h3>Data</h3>
+                        <ul>
+                            <li>Does the data mean we what think it means? (Are we very, very sure?)</li>
+                            <li>Is the data internally complete? (e.g., no missing years) If not, do we make it clear what data is missing?
+                                <ul>
+                                    <li>For example, in a chart: dotted or missing lines and a corresponding footnote</li>
+                                    <li>In a table: “n/a” in the table cell, or an asterisk + footnote</li>
+                                </ul>
+                            </li>
+                            <li>Have we been careful to ensure we don't treat "0" and "null" interchangably?</li>
+                            <li>Does any bucketing of the data effectively represent the distribution? (quartiles, quintiles, equal-interval, jenks breaks, box plot, etc.)</li>
+                        </ul>
+                        <h3>Text</h3>
+                        <ul>
+                            <li>Is the headline human-friendly? (conversational, non-technical)</li>
+                            <li>Is Every Word In The Headline Capitalized? (NPR headline style)</li>
+                            <li>Are quotes in the headline singular and escaped? (&amp;lsquo;)</li>
+                            <li>Does the Source line link back, if possible?</li>
+                            <li>Does the Credit line include everyone who worked on the graphic?</li>
+                            <li>Do the footnotes explain all caveats a normal reader would need to know to understand the chart fully?</li>
+                        </ul>
+                        <h3>Technical / Code</h3>
+                        <ul>
+                            <li>Does the graphic respond correctly? Does it read well on mobile? (e.g., nothing is cut off, text is readable, hover states disabled)</li>
+                            <li>Are we only including data we’re actually displaying (to keep page weight down)?</li>
+                            <li>Have you created a static fallback image for your final graphic? (fallback.png)
+                                <ul>
+                                    <li>If there have been late edits to your graphic, have you updated the fallback image?</li>
+                                </ul>
+                            </li>
+                            <li>Are all links out target="_blank" so they don't open inside the iframe.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

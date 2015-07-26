@@ -1,0 +1,249 @@
+    /*
+ * Base structure
+ */
+    /* Move down content because we have a fixed navbar that is 50px tall */
+    
+    body {
+        padding-top: 50px;
+    }
+    /*
+ * Global add-ons
+ */
+    
+    .sub-header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    /*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+    
+    .navbar-fixed-top {
+        border: 0;
+    }
+    /*
+ * Sidebar
+ */
+    /* Hide for mobile, show later */
+    
+    .sidebar {
+        display: none;
+    }
+    
+    @media (min-width: 768px) {
+        .sidebar {
+            position: fixed;
+            top: 51px;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: block;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* Scrollable contents if viewport is shorter than content. */
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+        }
+    }
+    /* Sidebar navigation */
+    
+    .nav-sidebar {
+        margin-right: -21px;
+        /* 20px padding + 1px border */
+        margin-bottom: 20px;
+        margin-left: -20px;
+    }
+    
+    .nav-sidebar > li > a {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    .nav-sidebar > .active > a,
+    .nav-sidebar > .active > a:hover,
+    .nav-sidebar > .active > a:focus {
+        color: #fff;
+        background-color: #428bca;
+    }
+    /*
+ * Main content
+ */
+    
+    .main {
+        padding: 20px;
+    }
+    
+    @media (min-width: 768px) {
+        .main {
+            padding-right: 40px;
+            padding-left: 40px;
+        }
+    }
+    
+    .main .page-header {
+        margin-top: 0;
+    }
+    /*
+ * Placeholder dashboard ideas
+ */
+    
+    .placeholders {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .placeholders h4 {
+        margin-bottom: 0;
+    }
+    
+    .placeholder {
+        margin-bottom: 20px;
+    }
+    
+    .placeholder img {
+        display: inline-block;
+        border-radius: 50%;
+    }
+
+    /*
+* For parent.html
+*/
+
+a, a:link,
+        a:visited {
+            color: #4774CC;
+            text-decoration: none;
+        }
+        a:hover,
+        a:active {
+            color: #bccae5;
+        }
+
+        a.btn {
+            font-size: 12px;
+            line-height: 28px;
+            margin: 0;
+            float: left;
+            padding: 0 11px;
+            border-radius: 4px;
+            background-color: #f7f7f7;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+        }
+        a.btn:hover,
+        a.btn:active {
+            background-color: #fff;
+        }
+
+        .graphics-list li {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+/* Sidebar navigation */
+    
+    .nav-sidebar {
+        margin-right: -21px;
+        /* 20px padding + 1px border */
+        margin-bottom: 20px;
+        margin-left: -20px;
+    }
+    
+    .nav-sidebar > li > a {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    .nav-sidebar > .active > a,
+    .nav-sidebar > .active > a:hover,
+    .nav-sidebar > .active > a:focus {
+        color: #fff;
+        background-color: #428bca;
+    }
+
+        /* Header */
+        .parent-header {
+            background-color: #ebebeb;
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            height: 40px;
+            padding: 10px 5px 0 5px;
+            overflow: hidden;
+        }
+        .parent-header:after { clear: both; }
+
+        .parent-header .segment {
+            float: left;
+            padding-left: 5px;
+            padding-right: 5px;
+            white-space: nowrap;
+        }
+
+        .parent-header .right {
+            float: right;
+            margin-right: 15px;
+        }
+
+        .localhost,
+        a.localhost,
+        a.localhost:visited {
+            color: green;
+        }
+
+        .staging,
+        a.staging,
+        a.staging:visited {
+            color: orange;
+        }
+
+        .production,
+        a.production,
+        a.production:visited {
+            color: red;
+        }
+
+        .spreadsheet,
+        a.spreadsheet,
+        a.spreadsheet:visited {
+            color: #0F9D58;
+        }
+
+        .resize {
+            background-color: white;
+        }
+
+        /* Content */
+        .content {
+            margin: 60px 10px 10px 10px;
+        }
+
+        #preview-wrapper {
+            border: 2px dashed #ddd;
+            margin-bottom: 20px;
+        }
+
+        #preview {
+            width: 100%;
+        }
+
+        textarea {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        kbd {
+color: #000;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 0.1em 0.5em;
+margin: 0 0.2em;
+box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+background-color: #f7f7f7;
+}
+
+ol li {margin: .25em auto; }
+ul li {margin: .25em auto; }

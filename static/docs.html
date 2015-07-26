@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Graphic Embed : Mashable</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="//rack.3.mshcdn.com/assets/header_logo.v2.us-30574d105ad07318345ec8f1a85a3efa.png" style="height: 1.25em;"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-book fa-fw"></i>Documentation <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/static/templates.html"><i class="fa fa-bar-chart fa-fw"></i> Templates</a></li>
+                    <li><a href="/static/checklist.html"><i class="fa fa-check-square-o fa-fw"></i> Checklist</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Documentation</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>What is MashGraphics?</h2>
+                        <p>Mashgraphics (based on NPR’s <a href="//github.com/nprapps/dailygraphics" target="_blank">dailygraphics</a>) is a framework for creating and deploying responsive graphics suitable for publishing inside a CMS with <a href="//github.com/nprapps/pym.js" target="_blank">pym.js</a>. The MashGraphics rig offers a workflow and some automated machinery for creating, deploying and embedding short-turnaround charts, tables and other graphics for daily stories.</p>                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>How Do I Make a Graphic?</h2>
+                        <p>If you’re reading this, the hardest part — installing MashGraphics — has already been done (for you, hopefully).</p>
+                        <p>Making a graphic is an easy, four-part process that includes: <strong>1. Generating</strong> a graphic from one of the built-in templates; <strong>2. Customizing</strong> the graphic for your particular project; <strong>3. “Deploying,”</strong> or publishing, and testing your graphic on the Internet; and <strong>4. Embedding</strong> the finished product in your story.</p>
+                        <p>You will need some basic fluency with the command line, or Terminal. But don’t worry, this guide will teach you everything you need to know.</p>
+                        <ol>
+                        <li>Your Workspace</li>
+                        	<ol>
+                        		<li><a href="#terminal">Terminal 101</a></li>
+                        		<li><a href="#launch">Launching MashGraphics</a></li></li>
+                        	</ol>
+                        <li>Setting Up Your Graphic</li>
+                            <ol>
+                                <li><a href="#slug">Choose a slug</a></li>
+                                <li><a href="#generate">Generate a graphic</a></li>
+                                <li><a href="#data">Enter your data</a></li>
+                            </ol>
+                        <li>Publishing Your Graphic</li>
+                        <ol>
+                                <li><a href="#deploy">Deploying your graphic</a></li>
+                                <li><a href="#embed">Embedding your graphic</a></li>
+                            </ol>
+                        </ol>
+                <a name="workspace"></a><div class="row"><div class="col-md-12">
+                <h3>Your Workspace</h3>
+                    <p>If you’re reading this, you (or someone) has already downloaded and launched MashGraphics to and from your local computer. That means they’ve installed <code>xcode</code>, <code>homebrew</code>, <code>pip</code>, <code>virtualenv</code>, <code>virtualenvwrapper</code>, and <code>node</code>, set up your <code>.bash_profile</code>, and, hopefully, issued you a pair of Amazon S3 credentials, created your Amazon S3 buckets, and configured <code>mashgraphics/app_config.py</code>.</p>
+                    <p>But to start creating your own graphics, you’re going to need to learn to use the Terminal a little bit. If you’ve never used the Terminal or a command line before, read <strong>Terminal 101</strong>. If you already know your way around a shell prompt, <code>cd</code> into <code>mashgraphics</code> and skip to Step 5 under <strong>Launching MashGraphics</strong>.</p>
+                    <a name="terminal"></a><h4>Terminal 101</h4>
+                    <ol>
+                            <li>Use <kbd>cmd</kbd> + <kbd>space</kbd> to open Spotlight Search and find the Terminal application (if you can’t find it with Spotlight, it’s in <code>/Applications/Utilities/Terminal.app</code>).</li>
+                            <li>By default, the Terminal will open to your Home directory (<code>/Users/YourName</code>). Let’s switch to your Desktop.</li>
+                            <li>Type <code>cd Desk</code>, then hit <kbd>tab</kbd> (the Terminal will recognize that you’re looking for the Desktop folder and auto-complete the command for you), then hit <kbd>return</kbd>.</li>
+                            <li>Now type in <code>ls</code> and hit <kbd>return</kbd>.</li>
+                            <li>You should get a list of all the files on your Desktop.</li>
+                            <li><code>cd</code> and <code>ls</code> are “commands” (“change directory” and “list directory contents”, respectively). You basically <em>command</em>ed the computer to <em>change directories</em> (<code>cd</code>) into your Desktop folder, and then <em>command</em>ed it to <em>list</em> (<code>ls</code>) the current directory’s contents. This is the gist of what the Terminal does—you type in commands to make the computer do things, like navigate the folders on your hard drive.
+                            <p><span class="label label-default">NOTE</span> If you ever want to see what directory you’re currently in, run <code>pwd</code> (“print working directory”). You can also do <code>open .</code> to <em>open</em> the current directory with the Finder.</p></li>
+                    </ol>
+                     <a name="launch"></a><h4>Launching MashGraphics</h4>
+                        <ol>
+                            <li>Open a fresh Terminal window. If it’s already running, you can use <kbd>cmd</kbd> + <kbd>N</kbd>.</li>
+                            <li>To launch and start using MashGraphics, you’ll need to <code>cd</code> into the <code>mashgraphics</code> directory. It should have been installed into the <code>Applications</code> folder within your <code>Home</code> directory.</li>
+                            <li>To get there using the Terminal, run <code>cd ~/Applications/mashgraphics</code>.</li>
+                            <li>Your prompt should look like this:
+<p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
+                            <li>Now run <code>fab app</code>. You should get:
+<p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ fab app
+> [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
+>_</pre></p>
+                            <p>Congratulations! You just launched MashGraphics all on your own and it’s running normally on your local computer.</p></li>
+                        <li>Since this shell is busy running the MashApps software, you’ll need to open a second one to make graphics. Do this by opening a new Terminal tab using <kbd>cmd</kbd> + <kbd>T</kbd>.</li>
+                        <li>The new tab should show something like this:
+<p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
+                        <li>From here on out, any time the instructions say to run a command in a terminal, do it in this tab.</li>
+                        <li>Finally, open a browser window and go to <code>localhost:8000</code>
+                    </ol>
+                </div></div>
+                <a name="slug"></a><div class="row"><div class="col-md-12">
+                        <h3>Setting Up Your Graphic</h3>
+                        <h4> 1. Choose a slug</h4>
+                        <p>A <code>$SLUG</code> is the name of your graphic. Its format should be the date (<code>YYYY-MM-DD</code>), followed by a short, descriptive name for your project, like <code>gay-marriage-map</code> or <code>poverty-chart</code>. Keep it URL-safe (i.e., Lowercase, dashes instead of spaces, and no special characters).</p>
+                        <p>Here are some examples of “do”s and “don’t”s:</p>
+                        <ul>
+                            <li><code>2015-07-31-my-project-name</code> <span class="label label-success">YAAAS!</span></li>
+                            <li><code>2015 07 31 my project name</code> <span class="label label-danger">No</span></li>
+                            <li><code>20150731-my-project-name</code> <span class="label label-danger">Bad</span></li>
+                            <li><code>2015-07-31-My-Project-NAME</code> <span class="label label-danger">Danger, Will Robinson</span></li>
+                            <li><code>2015 07 31 my wonderful project!</code> <span class="label label-danger">Are you F-ing kidding me?</span></li>
+                        </ul>
+                    </div></div>
+                <a name="generate"></a><div class="row"><div class="col-md-12">
+                        <h4>2. Generate a graphic</h4>
+                        <p>Next you’ll generate your graphic using a built-in tool called Fabric, or <code>fab</code>.</p>
+                        <ol>
+                        <li>Choose what kind of graphic you need to make (regular graphic, bar chart, column chart, line chart, etc.).
+                         <p><span class="label label-primary">NOTE</span> See <a href="/static/templates.html">here</a> to see what kinds of graphic templates are available and to look up their respective <code>fab</code> commands.</p></li>
+                        <li>Run the corresponding <code>fab</code> command in your terminal.
+                        <p><span class="label label-danger">HEADS UP!</span> Remember to replace <code>$SLUG</code> with the slug you chose in Step 1. For example, if you want to make a dot chart slugged <code>2015-07-31-my-project-name</code>, you would run: <code>fab add_dot_chart:2015-07-31-my-project-name</code>.</p></li>
+                        <li><p>Your terminal should now look something like this:</p>
+                <pre><samp>> JohnDoes-MacBook-Pro:mashgraphics John$ fab add_dot_chart:2015-07-31-my-project-name
+> [localhost] local: cp -r graphic_templates/_base ~/mashgraphics/> graphics/2015-07-31-my-project-name
+> [localhost] local: cp -r graphic_templates/dot_chart/* ~/mashgraphics/graphics/2015-07-31-my-project-name
+> Creating spreadsheet...
+> New spreadsheet created successfully!
+> View it online at https://docs.google.com/spreadsheet/ccc?key=1tjL_dVh59j4-RxAR9aUXC27cLLl6q48my34hgY_ukgU#gid=1
+> Run `fab app` and visit http://127.0.0.1:8000/graphics/2015-07-31-my-project-name to view
+> 
+> Done.
+> JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></li>
+</div></div>
+                <a name="data"></a><div class="row"><div class="col-md-12">
+                    <h4>3. Enter your data</h4>
+                    <ol>
+                    <li>Time to start customizing your chart. To enter your data, go to the <a href="/" target="_blank">Dashboard</a>; A link to your graphic should be in the main column. (There will also be a link in the menu on the left.) Click on either link to open your graphic.</li>
+                    <style>
+                    .btn {
+                        font-size: 12px;
+                        line-height: 28px;
+                        margin: 0;
+                        padding: 0 11px;
+                        border-radius: 4px;
+                        background-color: #f7f7f7;
+                        font-weight: bold;
+                        -webkit-font-smoothing: antialiased;
+                    }
+
+                    .btn:hover,
+                    .btn:active {
+                        background-color: #f7f7f7;
+                    }
+
+                    .spreadsheet,
+                    .spreadsheet,
+                    .spreadsheet:hover {
+                        color: #0F9D58;
+                    }
+                    .staging,
+                    .staging,
+                    .staging:hover {
+                        color: orange;
+                    }
+                    .production,
+                    .production,
+                    .production:hover {
+                        color: red;
+                    }
+                    </style>
+                    <li>On your graphic’s page, click on the <span class="btn spreadsheet"><i class="fa fa-table fa-fw"></i> spreadsheet &raquo;</span> button.</li>
+                    <li>A Google spreadsheet should open in a new tab/window. The specifics will vary depending on what kind of graphic or chart you generated, but most graphics should have two sheets: <code>labels</code> and <code>data</code>.
+                    </li>
+                    <li>On the <code>labels</code> sheet, edit the values for <code>headline</code>, <code>subhed</code>, <code>footnote</code>, <code>source</code>, and <code>credit</code> as necessary.</li>
+                    <li>On the <code>data</code> sheet, enter the data for your graphic.</li>
+                    <li>Refresh your graphic page.
+                    <p><span class="label label-warning">HEADS UP!</span> If you’ve followed these instructions to the letter, you shouldn’t be having any problems. But if refreshing doesn’t update your graphic with the changes to your Google sheet, try running <code>fab update_copy:$SLUG</code> in your terminal <strong>OR</strong> adding <code>$SLUG/?refresh=1</code> to the end of your graphic page’s URL (it should look like: <code>http://localhost:8000/graphics/$SLUG/?refresh=1</code>).</p></li>
+                    <li>Click on the 
+                    <span class="btn"><i class="fa fa-outdent fa-fw"></i> Sidebar (180px)</span>, 
+                    <span class="btn"><i class="fa fa-mobile fa-fw"></i> Mobile (300px)</span>, 
+                    <span class="btn"><i class="fa fa-desktop fa-fw"></i> Desktop (730px)</span>, and 
+                    <span class="btn"><i class="fa fa-search-plus fa-fw"></i> Fluid (100%)</span> buttons to preview how your graphic will appear on different platforms.</li>
+                    </ol>
+                    <ul>
+                    <li><span class="label label-info">NOTE</span> If you’re a real whiz with HTML, CSS, or JavaScript and want to make more advanced changes or edits to your graphic’s appearance, go back to your terminal and run <code>open graphics/$SLUG</code>. This will open the folder for your graphic in the Finder, where you can tinker with the source code directly.
+                    </li>
+                    <li><span class="label label-primary">REPORTERS</span> Circulate this Google spreadsheet with your editor! Now is the time to start soliciting and making changes to the data itself, as well as any copy, such as headlines, deks, or credit lines.</li>
+                    </ul>
+                </div></div>
+
+               <a name="deploy"></a><div class="row"><div class="col-md-12">
+                     <h3>Publishing Your Graphic</h3>
+                     <h4>4. Deploying your graphic</h4>
+                        <p>“Deploying” a graphic (or moving it from your computer to the Internet) is essentially a two-part process. First, you’ll need to “stage” your graphic, which means uploading it to a hidden server on the Internet, known as a “staging environment,” for final testing.</p>
+                        <p>When you’re satisfied with your staged graphic, you can deploy it to a public server (known as a “production environment”). This is the version that you will embed into your story.</p>
+                        <p><h5>A. Staging</h5>
+                            <ol>
+                                <li>To stage your graphic, run <code>fab staging deploy:$SLUG</code> in your terminal.</li>
+
+                                <li>Your terminal should spit out a bunch of stuff, ending with something like this:
+                                <p>
+<pre><samp>> Staging URL: http://mashable-your-name-stage.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
+> 
+> Done.
+> JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></p>
+                                </li>
+                                <li>In your browser, on your graphic’s page, click on the <span class="btn staging"><i class="fa fa-cubes fa-fw"></i> staging &raquo;</span> button. It should open a new, “staging” tab/window.</li>
+                                <li>Now’s your last chance to make edits or changes to your graphic. Hopefully, your editors have already made their changes in your Google Spreadsheet by this point. But be sure to circulate the staging URL with them (or anyone else who needs to sign off on the graphic) for any final testing and last-minute edits. This is also a good time to run through the <a href="/static/checklist.html" target="_blank">Pre-Production Checklist</a>.</li>
+                                </ul></li></ol></p>
+                                <p><h5>B. Production</h5>
+                                <ol>
+                                <li>If everything looks good <span class="label label-danger">AND YOUR EDITOR HAS SIGNED OFF</span>, run <code>fab production deploy:$SLUG</code> in your terminal.</span></li>
+                                <li>You should get:<p>
+<pre><samp>> Production URL: http://mashable-your-name-apps.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
+> 
+> Done.
+> JohnDoes-MacBook-Pro:mashgraphics John</samp></pre></p></li>
+                                <li>In your browser, on your graphic’s page, click on the <span class="btn production"><i class="fa fa-rss fa-fw"></i> production &raquo;</span> button. This time, it should open a “production” tab/window.</li>
+                            </ol>
+                            </p>
+                </div></div>
+                <a name="embed"></a><div class="row"><div class="col-md-12">
+                    <h4>5. Embedding your graphic</h4>
+                    <ol>
+                        <li>On your graphic’s <span class="btn production"><i class="fa fa-rss fa-fw"></i> production</span> page, there should be an iframe with your graphic inside of it, and an embed code below the graphic.</li>
+                        <li>Copy and paste the embed code into your WordPress shell.</li>
+                    </ol>
+                </div></div>
+                <div class="row"><div class="col-md-12">
+                <h3><span class="label label-success">Congratulations!</span></h3> If you made it this far, you just created and published your first MashGraphic (and learned a bit of Terminal-fu and web development along the way). Nice job! Now go pour yourself an iced coffee from the MashCafe or head up to the roof for some fresh air. You deserve it.</h3>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
