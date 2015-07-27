@@ -1,4 +1,4 @@
-dailygraphics
+Mashgraphics
 =============
 
 * [What is this?](#what-is-this)
