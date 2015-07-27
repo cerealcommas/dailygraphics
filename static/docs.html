@@ -119,14 +119,22 @@
                             </ul>
                             <li>Your prompt should look like this:
 <p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
+<li>Run <code>workon mashgraphics</code> and hit <kbd>return</kbd> You should get:
+<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab app
+> [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
+> _</pre></p></li>
                             <li>Now run <code>fab app</code>. You should get:
-<p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ fab app
+<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab app
 > [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
 > _</pre></p>
                             <p>Congratulations! You just launched Mashgraphics all on your own and it’s running normally on your local computer.</p></li>
                         <li>Since this shell is busy running the Mashgraphics software, you’ll need to open a second one to actually make your graphics. Do this by opening a new Terminal tab using <kbd>cmd</kbd> + <kbd>T</kbd>.</li>
                         <li>The new tab should show something like this:
 <p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
+                        <li>Run <code>workon mashgraphics</code> again. You should get:
+<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab app
+> [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
+> _</pre></p></li>
                         <li>From here on out, any time the instructions say to run a command in a terminal, do it in this tab.</li>
                         <li>Finally, open a browser window and go to <code>localhost:8000</code>
                     </ol>
@@ -149,11 +157,11 @@
                         <p>Next you’ll generate your graphic using a built-in tool called Fabric, or <code>fab</code>.</p>
                         <ol>
                         <li>Choose what kind of graphic you need to make (regular graphic, bar chart, column chart, line chart, etc.).
-                         <ul><li><span class="label label-primary">NOTE</span> See <a href="/static/templates.html">here</a> to see what kinds of graphic templates are available and to look up their respective <code>fab</code> commands. If none of the existing templates suit your needs, create a generic graphic using <code>fab add_graphic:$SLUG</code> and talk to the art team about requesting a bespoke graphic.</li></ul></li>
+                         <ul><li><span class="label label-primary">NOTE</span> See <a href="/static/templates.html" target="_blank">here</a> to see what kinds of graphic templates are available and to look up their respective <code>fab</code> commands. If none of the existing templates suit your needs, create a generic graphic using <code>fab add_graphic:$SLUG</code> and talk to the art team about requesting a bespoke graphic.</li></ul></li>
                         <li>Run the corresponding <code>fab</code> command in your terminal.
                         <ul><li><span class="label label-danger">HEADS UP!</span> Remember to replace <code>$SLUG</code> with the slug you chose in Step 1. For example, if you want to make a dot chart slugged <code>2015-07-31-my-project-name</code>, you would run <code>fab add_dot_chart:2015-07-31-my-project-name</code>.</li></ul></li>
                         <li><p>Your terminal should now look something like this:</p>
-                <pre><samp>> JohnDoes-MacBook-Pro:mashgraphics John$ fab add_dot_chart:2015-07-31-my-project-name
+                <pre><samp>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab add_dot_chart:2015-07-31-my-project-name
 > [localhost] local: cp -r graphic_templates/_base ~/mashgraphics/> graphics/2015-07-31-my-project-name
 > [localhost] local: cp -r graphic_templates/dot_chart/* ~/mashgraphics/graphics/2015-07-31-my-project-name
 > Creating spreadsheet...
@@ -162,7 +170,7 @@
 > Run `fab app` and visit http://127.0.0.1:8000/graphics/2015-07-31-my-project-name to view
 > 
 > Done.
-> JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></li>
+> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></li>
 </div></div>
                 <a name="data"></a><div class="row"><div class="col-md-12">
                     <h4>3. Enter your data</h4>
@@ -243,13 +251,13 @@ Once you’ve received and approved your custom graphic from the art team, chang
                             <ol>
                                 <li>To stage your graphic, run <code>fab staging deploy:$SLUG</code> in your terminal.</li>
 
-                                <li>Your terminal should do a bunch of things and spit out some stuff, ending with something like this:
+                                <li>Your terminal should do a bunch of things and spit out some stuff, ending with something like this (If you get an error, double-check to make sure you typed the graphic’s slug correctly):
                                 <p>
 <pre><samp>…
 > Staging URL: http://mashable-your-name-stage.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
 > 
 > Done.
-> JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></p>
+> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></p>
                                 </li>
                                 <li>In your browser, on your graphic’s page, click on the <span class="btn staging"><i class="fa fa-cubes fa-fw"></i> staging &raquo;</span> button. It should open a new, “staging” tab/window.</li>
                                 <li>This is your last chance to make edits or changes to your graphic. Hopefully, your editors have already made their changes in your Google Spreadsheet by this point. But be sure to circulate the staging URL with them (or anyone else who needs to sign off on the graphic) for any final testing and last-minute edits. This is also a good time to run through the <a href="/static/checklist.html" target="_blank">Pre-Production Checklist</a> for anything you may have missed.</li>
@@ -262,7 +270,7 @@ Once you’ve received and approved your custom graphic from the art team, chang
 > Production URL: http://mashable-your-name-apps.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
 > 
 > Done.
-> JohnDoes-MacBook-Pro:mashgraphics John</samp></pre></p></li>
+> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John</samp></pre></p></li>
                                 <li>In your browser, on your graphic’s page, click on the <span class="btn production"><i class="fa fa-rss fa-fw"></i> production &raquo;</span> button. This time, it should open a “production” tab/window.</li>
                             </ol>
                             </p>
