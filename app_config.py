@@ -14,7 +14,7 @@ NAMES
 """
 # Project name in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = 'dailygraphics'
+PROJECT_SLUG = 'mashgraphics'
 
 # Slug for assets dir on S3
 ASSETS_SLUG = PROJECT_SLUG
