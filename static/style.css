@@ -64,7 +64,7 @@
     .nav-sidebar > .active > a,
     .nav-sidebar > .active > a:hover,
     .nav-sidebar > .active > a:focus {
-        color: #fff;
+        
         background-color: #428bca;
     }
     /*
@@ -235,15 +235,56 @@ a, a:link,
         }
 
         kbd {
-color: #000;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-padding: 0.1em 0.5em;
-margin: 0 0.2em;
-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
-background-color: #f7f7f7;
-}
+            color: #000;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 0.1em 0.5em;
+            margin: 0 0.2em;
+            box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+            background-color: #f7f7f7;
+        }
 
+/* Some sloppy CSS */
 ol li {margin: .25em auto; }
 ul li {margin: .25em auto; }
+
+.nav-sidebar li
+{margin-top: 0em; margin-bottom: 0em; border-bottom: solid 1px #E7E7E7; }
+
+.sidebar {
+    background-color: #F8F8F8;
+}
+
+.sidebar li .active a {
+    background-color: #EEEEEE;
+}
+
+.sidebar a:hover {
+    color: #25537A !important;
+}
+
+.navbar-inverse {
+    background-color: #F8F8F8 !important;
+    background-image: none !important;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #337AB7;
+    text-shadow: none;
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+    color: #25537A;
+    text-shadow: none;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar { background-color: #000; }
+
+.nav-sidebar > .active > a,
+    .nav-sidebar > .active > a:hover,
+    .nav-sidebar > .active > a:focus {
+        color: #25537A !important;
+        background-color: #EEEEEE !important;
+    }
