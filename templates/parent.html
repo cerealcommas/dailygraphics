@@ -329,6 +329,50 @@ ul li {margin: .25em auto; }
             border-right: 1px solid #eee;
         }
     }
+
+    /* Some sloppy CSS */
+ol li {margin: .25em auto; }
+ul li {margin: .25em auto; }
+
+.nav-sidebar li
+{margin-top: 0em; margin-bottom: 0em; border-bottom: solid 1px #E7E7E7; }
+
+.sidebar {
+    background-color: #F8F8F8;
+}
+
+.sidebar li .active a {
+    background-color: #EEEEEE;
+}
+
+.sidebar a:hover {
+    color: #25537A !important;
+}
+
+.navbar-inverse {
+    background-color: #F8F8F8 !important;
+    background-image: none !important;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #337AB7;
+    text-shadow: none;
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+    color: #25537A;
+    text-shadow: none;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar { background-color: #000; }
+
+.nav-sidebar > .active > a,
+    .nav-sidebar > .active > a:hover,
+    .nav-sidebar > .active > a:focus {
+        color: #25537A !important;
+        background-color: #EEEEEE !important;
+    }
     </style>
 </head>
 <body>
@@ -392,8 +436,8 @@ ul li {margin: .25em auto; }
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
             <div class="segment">
+            <h1 style="font-weight: bold; float: right;">{{ slug }}</h1>
             <h1 class="{{ DEPLOYMENT_TARGET or 'localhost' }}">{{ DEPLOYMENT_TARGET or 'localhost' }}</h1>
-            <h2>{{ slug }}</h2>
         </div>
 
         <div class="segment">
