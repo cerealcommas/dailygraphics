@@ -451,7 +451,7 @@ ul li {margin: .25em auto; }
         </div>
 
 {# Embed code - only appears in production mode #}
-{% if DEPLOYMENT_TARGET != "production" %}
+{% if DEPLOYMENT_TARGET == "production" %}
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css"></script>
     <style>
     .prettyprint xmp {
@@ -468,7 +468,7 @@ ul li {margin: .25em auto; }
     }
     </style>
     <p>Using <code>&lt;iframe&gt;</code>:</p>
-    <p><pre class="prettyprint linenums" style="padding: 1em;"><xmp><iframe src="//{{ PRODUCTION_S3_BUCKET['bucket_name'] }}.s3-website-{{ PRODUCTION_S3_BUCKET['region'] }}.amazonaws.com/{{ PROJECT_SLUG }}/graphics/{{ slug }}/child.html" style="width: 100%; height: 600; border: 0;"></iframe></xmp></pre></p>
+    <p><pre class="prettyprint linenums" style="padding: 1em;"><xmp><iframe src="//{{ PRODUCTION_S3_BUCKET['bucket_name'] }}.s3-website-{{ PRODUCTION_S3_BUCKET['region'] }}.amazonaws.com/{{ PROJECT_SLUG }}/graphics/{{ slug }}/child.html" style="width: 100%; height: 600px; border: 0;"></iframe></xmp></pre></p>
 
     <p>Using <code>pym.js</code>:</p>
     <p><pre class="prettyprint linenums" style="padding: 1em;"><xmp><div id="responsive-embed-{{ slug }}"></div>
