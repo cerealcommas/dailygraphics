@@ -120,21 +120,17 @@
                             <li>Your prompt should look like this:
 <p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
 <li>Run <code>workon mashgraphics</code> and hit <kbd>return</kbd> You should get:
-<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab app
-> [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
-> _</pre></p></li>
+<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
                             <li>Now run <code>fab app</code>. You should get:
 <p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab app
 > [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
 > _</pre></p>
                             <p>Congratulations! You just launched Mashgraphics all on your own and it’s running normally on your local computer.</p></li>
-                        <li>Since this shell is busy running the Mashgraphics software, you’ll need to open a second one to actually make your graphics. Do this by opening a new Terminal tab using <kbd>cmd</kbd> + <kbd>T</kbd>.</li>
+                        <li>Since this terminal is now busy running the Mashgraphics software, you’ll need to open a second Terminal tab to make graphics. Do this by hitting <kbd>cmd</kbd> + <kbd>T</kbd>.</li>
                         <li>The new tab should show something like this:
 <p><pre>> JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
                         <li>Run <code>workon mashgraphics</code> again. You should get:
-<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ fab app
-> [localhost] local: gunicorn -b 0.0.0.0:8000 --timeout 3600 --debug --reload app:wsgi_app
-> _</pre></p></li>
+<p><pre>> (mashgraphics)JohnDoes-MacBook-Pro:mashgraphics John$ _</pre></p></li>
                         <li>From here on out, any time the instructions say to run a command in a terminal, do it in this tab.</li>
                         <li>Finally, open a browser window and go to <code>localhost:8000</code>
                     </ol>
