@@ -53,17 +53,17 @@ authomatic = Authomatic(authomatic_config, os.environ.get('AUTHOMATIC_SALT'))
 DEPLOYMENT
 """
 PRODUCTION_S3_BUCKET = {
-    'bucket_name': 'mashable-sergio-hernandez-apps',
+    'bucket_name': 'mashgraphics-graphics',
     'region': 'us-east-1'
 }
 
 STAGING_S3_BUCKET = {
-    'bucket_name': 'mashable-sergio-hernandez-stage',
+    'bucket_name': 'mashgraphics-stage',
     'region': 'us-east-1'
 }
 
 ASSETS_S3_BUCKET = {
-    'bucket_name': 'mashable-sergio-hernandez-assets',
+    'bucket_name': 'mashgraphics-assets',
     'region': 'us-east-1'
 }
 
