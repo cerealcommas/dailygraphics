@@ -32,7 +32,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+                    <li><a href="/static/docs.html"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
                 </ul>
             </div>
         </div>
@@ -82,10 +82,12 @@
                 <a name="workspace"></a><div class="row"><div class="col-md-12">
                 <h3>Your Workspace</h3>
                     <p>If you’re reading this, you (or someone) has already downloaded and launched Mashgraphics to and from your local computer. That means they’ve installed <code>xcode</code>, <code>homebrew</code>, <code>pip</code>, <code>virtualenv</code>, <code>virtualenvwrapper</code>, and <code>node</code>, set up your <code>.bash_profile</code>, and, hopefully, issued you a pair of Amazon S3 credentials, created your Amazon S3 buckets, and configured <code>mashgraphics/app_config.py</code>.</p>
-                    <p>But to start making graphis on your own, you’re going to need to learn to use the Terminal a little bit first. If you already know your way around a shell prompt, <code>cd</code> into <code>mashgraphics</code> and skip to Step 5 under <strong>Launching Mashgraphics</strong>. If you have no idea what I’m talking about, keep reading.</p>
+                    <p>But to start making graphics on your own, you’re going to need to learn to use the Terminal a little bit first. If you already know your way around a shell prompt, <code>cd</code> into <code>mashgraphics</code> and skip to Step 5 under <strong>Launching Mashgraphics</strong>. If none of that made any sense to you, just keep reading.</p>
                     <a name="terminal"></a><h4>Terminal 101</h4>
                     <ol>
-                            <li>Use <kbd>cmd</kbd> + <kbd>space</kbd> to open Spotlight Search and find the Terminal application (if you can’t find it with Spotlight, it’s in <code>/Applications/Utilities/Terminal.app</code>).</li>
+                            <li>Use <kbd>cmd</kbd> + <kbd>space</kbd> to open Spotlight Search and find the Terminal application (if you can’t find it with Spotlight, it’s in <code>/Applications/Utilities/Terminal.app</code>):
+                            <p style="text-align: center;"><img src="/static/docs/figure1.png" style="width: 50%;"></p>
+                            </li>
                             <li>By default, the Terminal will open to your Home directory (<code>/Users/YourName/</code>). Let’s switch to your Desktop.</li>
                             <li>Type <code>cd Desk</code>, then hit <kbd>tab</kbd> (the Terminal will recognize that you’re looking for the <code>Desktop</code> folder and auto-complete the command for you), then hit <kbd>return</kbd>.</li>
                             <li>Now type in <code>ls</code> and hit <kbd>return</kbd>.</li>
@@ -137,7 +139,7 @@
                         <p>Next you’ll generate your graphic using a built-in tool called Fabric, or <code>fab</code>.</p>
                         <ol>
                         <li>Choose what kind of graphic you need to make (regular graphic, bar chart, column chart, line chart, etc.).
-                         <ul><li><span class="label label-primary">NOTE</span> See <a href="/static/templates.html">here</a> to see what kinds of graphic templates are available and to look up their respective <code>fab</code> commands. If none of the existing templates suit your needs, create a generic graphic using <code>fab add_graphic:$SLUG</code> and talk to Bob about making a bespoke graphic.</li></ul></li>
+                         <ul><li><span class="label label-primary">NOTE</span> See <a href="/static/templates.html">here</a> to see what kinds of graphic templates are available and to look up their respective <code>fab</code> commands. If none of the existing templates suit your needs, create a generic graphic using <code>fab add_graphic:$SLUG</code> and talk to the art team about requesting a bespoke graphic.</li></ul></li>
                         <li>Run the corresponding <code>fab</code> command in your terminal.
                         <ul><li><span class="label label-danger">HEADS UP!</span> Remember to replace <code>$SLUG</code> with the slug you chose in Step 1. For example, if you want to make a dot chart slugged <code>2015-07-31-my-project-name</code>, you would run <code>fab add_dot_chart:2015-07-31-my-project-name</code>.</li></ul></li>
                         <li><p>Your terminal should now look something like this:</p>
@@ -155,7 +157,7 @@
                 <a name="data"></a><div class="row"><div class="col-md-12">
                     <h4>3. Enter your data</h4>
                     <ol>
-                    <li>Time to start customizing your chart. To enter your data, go to the <a href="/" target="_blank">Dashboard</a>; A link to your graphic should be in the main column. (There will also be a link in the menu on the left.) Click on either link to open your graphic.</li>
+                    <li>Time to start customizing your chart. To enter your data, go to the <a href="/" target="_blank">Dashboard</a>; A link to your graphic should be in the <i class="fa fa-archive fa-fw"></i> <strong>Your Graphics</strong> pane.</li>
                     <style>
                     .btn {
                         font-size: 12px;
@@ -204,11 +206,11 @@ graphic_config.py
 graphic_config.pyc
 graphic.xlsx
 js/</pre></samp></p>
-Drag your graphic (make sure it’s named <code>fallback.png</code>) into this folder.
+Once you’ve received and approved your custom graphic from the art team, change its filename to <code>fallback.png</code> and drop it into this folder.
                         </li></ul>
                     </li>
                     <li>Go back to your graphic page and refresh.
-                    <ul><li><span class="label label-warning">HEADS UP!</span> If you’ve followed these instructions to the letter, you shouldn’t be having any problems. But if refreshing doesn’t update your graphic with the changes to your Google sheet, try running <code>fab update_copy:$SLUG</code> in your terminal <strong>OR</strong> adding <code>$SLUG/?refresh=1</code> to the end of your graphic page’s URL (it should look like this: <code>http://localhost:8000/graphics/$SLUG/?refresh=1</code>).</li></ul></li>
+                    <ul><li><span class="label label-warning">HEADS UP!</span> If refreshing doesn’t update your graphic with the changes to your Google sheet, try running <code>fab update_copy:$SLUG</code> in your terminal <strong>OR</strong> adding <code>$SLUG/?refresh=1</code> to the end of your graphic page’s URL (i.e: <code>http://localhost:8000/graphics/$SLUG/?refresh=1</code>).</li></ul></li>
                     <li>Click on the 
                     <span class="btn"><i class="fa fa-outdent fa-fw"></i> Sidebar (180px)</span>, 
                     <span class="btn"><i class="fa fa-mobile fa-fw"></i> Mobile (300px)</span>, 
@@ -231,9 +233,10 @@ Drag your graphic (make sure it’s named <code>fallback.png</code>) into this f
                             <ol>
                                 <li>To stage your graphic, run <code>fab staging deploy:$SLUG</code> in your terminal.</li>
 
-                                <li>Your terminal should spit out a bunch of stuff, ending with something like this:
+                                <li>Your terminal should do a bunch of things and spit out some stuff, ending with something like this:
                                 <p>
-<pre><samp>> Staging URL: http://mashable-your-name-stage.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
+<pre><samp>…
+> Staging URL: http://mashable-your-name-stage.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
 > 
 > Done.
 > JohnDoes-MacBook-Pro:mashgraphics John$ _</samp></pre></p>
@@ -245,7 +248,8 @@ Drag your graphic (make sure it’s named <code>fallback.png</code>) into this f
                                 <ol>
                                 <li>If everything looks good <span class="label label-danger">AND EVERYONE WHO NEEDS TO HAS SIGNED OFF</span>, run <code>fab production deploy:$SLUG</code> in your terminal.</span></li>
                                 <li>You should get:<p>
-<pre><samp>> Production URL: http://mashable-your-name-apps.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
+<pre><samp>…
+> Production URL: http://mashable-your-name-apps.s3-website-us-east-1.amazonaws.com/mashgraphics/graphics/$SLUG/
 > 
 > Done.
 > JohnDoes-MacBook-Pro:mashgraphics John</samp></pre></p></li>
