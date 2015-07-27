@@ -46,8 +46,8 @@
                     <li><a href="/static/templates.html"><i class="fa fa-bar-chart fa-fw"></i> Templates</span></a></li>
                     <li><a href="/static/checklist.html"><i class="fa fa-check-square-o fa-fw"></i> Checklist</span></a></li>
                 </ul>
-                Templates
                 <ul class="nav nav-sidebar">
+                    <li>Templates</li>
                     {% for template in templates %}
                     <li><a href="/templates/{{ template }}/?refresh=1">{{ template }}</a></li>
                     {% endfor %}
